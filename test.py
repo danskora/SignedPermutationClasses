@@ -1,7 +1,7 @@
 from newpolypermclass import *
 
 
-flips = 7
+flips = int(input("How many flips: "))
 C = PolyClass.prefix_reversal(flips)
 
 
