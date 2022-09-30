@@ -106,42 +106,42 @@ class PolyClass(object):
                         self.cross_sections[compact_perm].union(vector_set)
                     else:
                         self.cross_sections[compact_perm] = vector_set
-            one = 0
-            two = 0
-            three = 0
-            four = 0
-            five = 0
-            six = 0
-            seven = 0
-            eight = 0
-
-
-            for key in self.cross_sections:
-                match len(key):
-                    case 1:
-                        one+=1
-                    case 2:
-                        two+=1
-                    case 3:
-                        three+=1
-                    case 4:
-                        four+=1
-                    case 5:
-                        five+=1
-                    case 6:
-                        six+=1
-                    case 7:
-                        seven+=1
-                    case 8:
-                        eight+=1
-            print("8: " + str(eight))
-            print("7: " + str(seven))
-            print("6: " + str(six))
-            print("5: " + str(five))
-            print("4: " + str(four))
-            print("3: " + str(three))
-            print("2: " + str(two))
-            print("1: " + str(one))
+            # one = 0
+            # two = 0
+            # three = 0
+            # four = 0
+            # five = 0
+            # six = 0
+            # seven = 0
+            # eight = 0
+            #
+            #
+            # for key in self.cross_sections:
+            #     match len(key):
+            #         case 1:
+            #             one+=1
+            #         case 2:
+            #             two+=1
+            #         case 3:
+            #             three+=1
+            #         case 4:
+            #             four+=1
+            #         case 5:
+            #             five+=1
+            #         case 6:
+            #             six+=1
+            #         case 7:
+            #             seven+=1
+            #         case 8:
+            #             eight+=1
+            # print("8: " + str(eight))
+            # print("7: " + str(seven))
+            # print("6: " + str(six))
+            # print("5: " + str(five))
+            # print("4: " + str(four))
+            # print("3: " + str(three))
+            # print("2: " + str(two))
+            # print("1: " + str(one))
 
 
 
