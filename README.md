@@ -12,7 +12,7 @@ This code works with Python 3.
 In order to compute generating functions, either:
 1. [SymPy](https://www.sympy.org/en/index.html) must be installed
 2. The code must be run inside a [Sage](https://www.sagemath.org/) session
-3. The FUNCTION_STRINGS constant on line 45 must be set to true
+3. The FUNCTION_STRINGS constant on line 45 must be set to *True*
 
 Everything else (including enumerating polynomials) will work fine with no additional dependencies.
 
