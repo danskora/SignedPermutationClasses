@@ -23,4 +23,4 @@ The algorithm is implemented in permclass.py, which consists of three classes:
 2. SignedPerm
 3. Polynomial
 
-The purpose of each class is self-explanatory.  GridClass encapsulates all three major steps of our algorithm.  The **completion** and **compacting** steps are performed upon instantiation, while the **enumeration step** is performed any time *genfcn()* or *polynomial()* are called.
+The purpose of each class is self-explanatory.  GridClass encapsulates all three major steps of our algorithm.  The **completion** and **compacting** steps are performed upon instantiation, while the **enumeration** step is performed any time *genfcn()* or *polynomial()* are called.
