@@ -1,6 +1,6 @@
 # Enumerating Grid Classes of Signed Permutations
 
-An implementation of the algorithm described in [this paper](https://www.google.com/).  *link not set up yet since paper is pending publication*
+An implementation of the algorithm described in [this paper](https://arxiv.org/abs/2302.03929/).
 
 This repository can be cloned into the working directory from the terminal using:
 
