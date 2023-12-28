@@ -1,10 +1,6 @@
 # Enumerating Grid Classes of Signed Permutations
 
 An implementation of the algorithm described in [this paper](https://arxiv.org/abs/2302.03929/).
-
-This repository can be cloned into the working directory from the terminal using:
-
-    git clone https://github.com/skora7/SignedPermutationClasses.git
     
 ### Prerequisites
 This code works with Python 3.
