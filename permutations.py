@@ -209,7 +209,7 @@ class PegPerm:
                 a = (self.perm.entries[i]+2) * self.decorators[i]
                 b = (self.perm.entries[i+1]+2) * self.decorators[i+1]
 
-                if b-a == 1 or b == 0:
+                if b-a == 1 or (b == 0 and self.perm.entries[i+1]-self.perm.entries[i] == self.decorators[i]) or (a == 0 and self.perm.entries[i+1]-self.perm.entries[i] == self.decorators[i+1]):
                     return False
         return True
 
@@ -223,7 +223,30 @@ class PegPerm:
         idx = 0
         while idx < len(self):
             if self.decorators[idx] == 0:
-                val = self.signs  # TODO
+                sign = self.perm.signs[idx]
+
+                runlength = 1
+                while runlength+idx < len(self):
+                    if self.perm.signs[idx+runlength] == sign:
+                        if abs(self.perm.entries[idx+runlength] - self.perm.entries[idx+runlength-1]) == 1:
+                            runlength += 1
+                        else:
+                            break
+                    else:
+                        break
+
+                if runlength == 1:
+                    entries.append(self.perm.entries[idx])
+                    signs.append(self.perm.signs[idx])
+                    decorators.append(self.decorators[idx])
+                    vector.append(0)
+                else:
+                    entries.append(self.perm.entries[idx])
+                    signs.append(sign)
+                    decorators.append(self.perm.entries[idx+1]-self.perm.entries[idx])
+                    vector.append(runlength)
+
+                idx += runlength
 
             else:
                 entries.append(self.perm.entries[idx])
@@ -231,28 +254,6 @@ class PegPerm:
                 decorators.append(self.decorators[idx])
                 vector.append(0)
                 idx += 1
-
-            val = entries[idx + 1] - entries[idx]
-            # if a bond, checks if both signs are dots. if not, continues
-            if abs(val) == 1:
-                runlength = 1
-                while (decorators[idx + runlength - 1] == 0 and
-                       decorators[idx + runlength] == 0 and
-                       entries[idx + runlength] - entries[idx + runlength - 1] == val and
-                       ):
-                    runlength += 1
-                    # stop if we hit the end of the permutation
-                    if idx + runlength >= len(signs):
-                        break
-                # if we have a run, delete those entries and add to vector
-                if runlength > 1:
-                    for i in range(runlength - 1):
-                        perm = perm.delete(idx + 1)
-                        del signs[idx + 1]
-                    del vector[idx + 1 : idx + runlength]
-                    vector[idx] = runlength + 1
-                    signs[idx] = val
-            idx += 1
 
         # create avoidance basis
         basis = set()
@@ -262,8 +263,9 @@ class PegPerm:
                 new_vector[idx] = val
                 basis.add(tuple(new_vector))
 
-        # minimum vector is just the minimum vector that fills our new perm (idk if this is natural but that's what the paper describes)
-        minimum = [1 + abs(i) for i in signs]
+        # minimum vector is just the minimum vector that fills our new perm
+        # (idk if this is natural but that's what the paper describes)
+        minimum = [1 + abs(i) for i in decorators]
 
         return PegPerm(Permutation(entries, signs, self.perm.b), decorators), VectorSet(minimum, basis)
 
